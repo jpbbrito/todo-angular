@@ -1,12 +1,27 @@
+<div class="grid-conteiner">
+<div class="title"> 
+  <h1> Minhas Tarefas </h1>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"> ID </th>
+      <th scope="col"> Descrição </th>
+      <th scope="col">  </th>
+      <th scope="col">  </th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let todo of todos">
+      <th scope="row">{{todo.id}}</th>
+      <th> {{todo.title}}</th>
+      <th><button (click)="markAsDone(todo)"*ngIf="!todo.done" type="button" class="btn btn-success"> CONCLUIR </button> </th>
+      <th><button (click)="remove(todo)" *ngIf="todo.done" type="button" class="btn btn-danger"> REMOVER </button></th>
+      <th><button (click)="markAsUndone(todo)" *ngIf="todo.done" type="button" class="btn btn-warning"> REFAZER </button> </th>
+    </tr>
+  </tbody>
+</table>
 
-<h1> Minhas Tarefas </h1>
-<ul>
-  <li *ngFor="let todo of todos">
-    {{ todo.id }} - {{ todo.title }} |
-    <button (click)="markAsDone(todo)"*ngIf="!todo.done" type="button" class="btn btn-success"> CONCLUIR </button> |
-    <button (click)="remove(todo)" *ngIf="todo.done" type="button" class="btn btn-danger"> REMOVER </button> | 
-    <button (click)="markAsUndone(todo)" *ngIf="todo.done" type="button" class="btn btn-warning"> REFAZER </button>
-  </li>
   <form [formGroup]="form">
     <fieldset>
       <label> Titulo </label>
@@ -21,4 +36,5 @@
 
     </fieldset>
   </form>
-</ul>
+
+</div>

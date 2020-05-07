@@ -1,1 +1,4 @@
-
+.grid-conteiner{
+    display: grid;
+    height: auto;   
+}

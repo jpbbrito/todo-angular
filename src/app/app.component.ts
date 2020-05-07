@@ -18,11 +18,12 @@ export class AppComponent {
         Validators.required
       ])]
     });
+
     this.load();
   }
 
   add(){
-    const title = this.form.controls['title'].value;
+    const title = this.form.controls.title.value;
     const id = this.todos.length + 1;
     this.todos.push( new Todo(id, title, false));
     this.save();
@@ -55,6 +56,8 @@ export class AppComponent {
   }
   load(){
     const todos = localStorage.getItem('todos');
-    this.todos = JSON.parse(todos);
+    if (todos){
+      this.todos = JSON.parse(todos);
+    }
   }
 }
